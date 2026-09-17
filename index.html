@@ -268,6 +268,16 @@ code{font-size:.92em}
 .bar .phase{border:1px solid var(--rule);border-radius:40px;padding:5px 9px}
 .bar .phase.before{background:var(--cream-2)} .bar .phase.after{background:var(--plus);color:#0a0a0b}
 @media (max-width:480px){.wrap{padding-block:8px 16px;padding-inline:8px}.phone{border-radius:28px}}
+
+/* wiring */
+.wire{margin-top:16px;border:1.25px solid var(--ink);border-bottom-width:3px;border-radius:14px;overflow:hidden;background:var(--cream-2)}
+.w{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:9px 12px;border-top:1px solid var(--ink-12);font-size:12px}
+.w:first-child{border-top:0}
+.w .k{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--ink-60);grid-column:1}
+.w .d{grid-column:2;grid-row:1 / span 2;align-self:center;font-weight:700;font-size:11px;background:var(--white);border:1px solid var(--ink);border-radius:4px;padding:3px 6px;white-space:nowrap}
+.w .v{grid-column:1;font-weight:600;color:var(--ink);overflow-wrap:anywhere}
+.json{margin:14px 0 0;background:var(--ink);color:var(--cream);border-radius:14px;padding:12px 14px;font:11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;white-space:pre}
+.json .hl{color:var(--plus)}
 </style>
 
 <div class="wrap">
@@ -299,10 +309,10 @@ code{font-size:.92em}
       <!-- S2 Before reveal -->
       <section class="screen story" data-step="b-reveal" aria-label="What just happened" hidden>
         <div class="scroll">
-          <span class="pill-tag">Before · the problem</span>
-          <h2>A table.</h2>
-          <p>Five checkmarks. Zero clues about what today’s Knockout even asks. <b>Mystery is great for Hindsight.</b> Less great for paywalls.</p>
-          <p class="tagline">5 of 6 people who finish the free puzzles never even see this screen. It hides behind that button.</p>
+          <span class="pill-tag">Before · the gap</span>
+          <h2>A perfectly good table.</h2>
+          <p>It says what Spark+ includes. It just can’t say what <b>today’s</b> Knockout asks, or show the Hindsight photo waiting one tap away.</p>
+          <p class="tagline">And most people never get this far: 5 of 6 who finish the free puzzles skip past the button that opens it.</p>
         </div>
         <div class="bottom"><button class="cta" data-go="a-intro">Now the fix</button><button class="ghost" data-go="b-knowledge">Back</button></div>
       </section>
@@ -317,6 +327,58 @@ code{font-size:.92em}
         <div class="bottom"><button class="cta" data-go="knowledge">Replay the moment</button></div>
       </section>
 
+      <!-- S5 Behind the scenes -->
+      <section class="screen" data-step="wiring" aria-label="Behind the scenes" hidden>
+        <div class="topbar"><button class="iconbtn" data-go="end" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><span class="plus-pill" style="background:var(--teal)">CMS</span></div>
+        <div class="scroll">
+          <p class="kicker">Behind the scenes</p>
+          <h2 class="headline">Already plugged into the CMS</h2>
+          <p class="sub">Nothing on the speedbump is typed in. Each piece is a field on today’s daily puzzle record.</p>
+          <div class="wire">
+            <div class="w"><span class="k">daily-puzzles.title</span><span class="v">A Drop in the Ocean</span><span class="d">Kicker</span></div>
+            <div class="w"><span class="k">recommendationDescription</span><span class="v">Oceans, tides, and life beneath the waves</span><span class="d">Sub-line</span></div>
+            <div class="w"><span class="k">chili.title · subtitle</span><span class="v">Which borders more countries? · Land ho!</span><span class="d">Knockout card</span></div>
+            <div class="w"><span class="k">chili.axisLeft · axisRight</span><span class="v">Fewer countries ↔ More countries</span><span class="d">Axis</span></div>
+            <div class="w"><span class="k">chili.rounds[0].cards</span><span class="v">Sea of Tranquility vs Arctic Ocean</span><span class="d">Matchup + card art</span></div>
+            <div class="w"><span class="k">nutmeg.cards[0].introText</span><span class="v">Turning the tide</span><span class="d">Hindsight caption</span></div>
+            <div class="w"><span class="k">nutmeg.cards[0].minYear · maxYear</span><span class="v">1926 – 2026</span><span class="d">Year slider</span></div>
+            <div class="w"><span class="k">nutmeg.cards[0].image</span><span class="v">Into_the_Jaws_of_Death_23-0455M_edit.jpg</span><span class="d">Hindsight photo</span></div>
+          </div>
+          <pre class="json">{
+  &quot;id&quot;: &quot;e109206a-bd7a-4c89-9c2c-d1c42eecd163&quot;,
+  &quot;date&quot;: &quot;2026-06-08&quot;,
+  <span class="hl">&quot;title&quot;</span>: &quot;A Drop in the Ocean&quot;,
+  &quot;byline&quot;: &quot;Hayley Igarashi&quot;,
+  <span class="hl">&quot;recommendationDescription&quot;</span>: &quot;Oceans, tides, and life beneath the waves&quot;,
+  &quot;chili&quot;: {
+    <span class="hl">&quot;title&quot;</span>: &quot;Which borders more countries?&quot;,
+    <span class="hl">&quot;subtitle&quot;</span>: &quot;Land ho!&quot;,
+    <span class="hl">&quot;axisLeft&quot;</span>: &quot;Fewer countries&quot;,
+    <span class="hl">&quot;axisRight&quot;</span>: &quot;More countries&quot;,
+    &quot;rounds[0]&quot;: {
+      <span class="hl">&quot;left&quot;</span>: &quot;Sea of Tranquility&quot;,
+      <span class="hl">&quot;right&quot;</span>: &quot;Arctic Ocean&quot;
+    },
+    &quot;cards&quot;: &quot;7 cards, each with image + color&quot;
+  },
+  &quot;nutmeg&quot;: {
+    &quot;cards[0]&quot;: {
+      <span class="hl">&quot;title&quot;</span>: &quot;Omaha Beach, France&quot;,
+      <span class="hl">&quot;introText&quot;</span>: &quot;Turning the tide&quot;,
+      &quot;year&quot;: &quot;1944&quot;,
+      <span class="hl">&quot;minYear&quot;</span>: 1926,
+      <span class="hl">&quot;maxYear&quot;</span>: 2026,
+      &quot;image&quot;: &quot;Into_the_Jaws_of_Death_23-0455M_edit.jpg&quot;
+    }
+  },
+  &quot;_status&quot;: &quot;published&quot;,
+  &quot;puzzleStatus&quot;: &quot;final&quot;
+}</pre>
+          <p class="fine" style="margin-top:10px">Read through the Spark CMS connector, <code>findDailyPuzzles</code> at depth 2. Card art via the Spark image CDN. Swap the date and the screen rebuilds itself.</p>
+        </div>
+        <div class="bottom"><button class="cta" data-go="title">Start over</button><button class="ghost" data-go="end">Back</button></div>
+      </section>
+
       <!-- S4 End -->
       <section class="screen story" data-step="end" aria-label="The end" hidden>
         <div class="scroll">
@@ -325,7 +387,7 @@ code{font-size:.92em}
           <p>The only thing we changed is whether the user gets to see <b>what they’re saying no to.</b></p>
           <p class="tagline">Puzzle content from the Spark CMS for A Drop in the Ocean. Pattern borrowed from Elevate’s post-workout upsell.</p>
         </div>
-        <div class="bottom"><button class="cta" data-go="title">Start over</button><button class="ghost" data-go="speedbump">Back to the speedbump</button></div>
+        <div class="bottom"><button class="cta" data-go="wiring">See how it’s wired</button><button class="ghost" data-go="title">Start over</button></div>
       </section>
 
 <!-- 1 Links complete -->
